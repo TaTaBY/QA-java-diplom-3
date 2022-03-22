@@ -49,8 +49,7 @@ public class RegisterPage {
         setEmail();
         setPassword();
         clickRegisterButton();
-        $(byText("Вход")).shouldBe(visible);
-        return $(byText("Вход")).isDisplayed();
+        return $(byText("Вход")).shouldBe(visible).isDisplayed();
     }
 
     public String fillInRegistrationFormWithPasswordLessSixLetter() {

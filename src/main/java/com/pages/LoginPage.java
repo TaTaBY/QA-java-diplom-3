@@ -10,15 +10,14 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class LoginPage {
 
-    @FindBy(how = How.CLASS_NAME,using = "Auth_link__1fOlj")
+    @FindBy(how = How.CLASS_NAME, using = "Auth_link__1fOlj")
     private ElementsCollection registerOrRestoreLink;
 
-    @FindBy(how = How.TAG_NAME,using = "input")
+    @FindBy(how = How.TAG_NAME, using = "input")
     private ElementsCollection loginInputs;
 
     public RegisterPage clickRegisterLink() {
         registerOrRestoreLink.get(0).click();
-        $(byText("Регистрация")).shouldBe(visible);
         return page(RegisterPage.class);
     }
 
@@ -30,24 +29,19 @@ public class LoginPage {
         loginInputs.get(1).setValue(password);
     }
 
-    public void clickLogin () {
+    public void clickLogin() {
         $(byText("Войти")).click();
     }
 
-    public boolean login (String login, String password) {
+    public boolean login(String login, String password) {
         setEmailLogin(login);
         setPasswordLogin(password);
         clickLogin();
-        $(byText("Оформить заказ")).shouldBe(visible);
-        return $(byText("Оформить заказ")).isDisplayed();
+        return $(byText("Оформить заказ")).shouldBe(visible).isDisplayed();
     }
 
-    public RegisterPage clickRestoreButton () {
+    public RestorePage clickRestoreButton() {
         registerOrRestoreLink.get(1).click();
-        return page(RegisterPage.class);
-    }
-
-    public void clickExit () {
-        $(byText("Выход")).click();
+        return page(RestorePage.class);
     }
 }

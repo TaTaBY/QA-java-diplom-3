@@ -72,7 +72,7 @@ public class LoginTest extends BaseTest {
         boolean isRegistered = page(MainPage.class)
                 .clickLoginLink()
                 .clickRestoreButton()
-                .clickLoginButton()
+                .clickLoginLink()
                 .login(loginData.get("email"), loginData.get("password"));
 
         assertTrue(isRegistered);

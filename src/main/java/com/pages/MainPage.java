@@ -1,4 +1,5 @@
 package com.pages;
+
 import com.codeborne.selenide.ElementsCollection;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -9,20 +10,18 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
 
-    public static final String URL  = "https://stellarburgers.nomoreparties.site";
+    public static final String URL = "https://stellarburgers.nomoreparties.site";
 
-    @FindBy(how = How.CLASS_NAME,using = "AppHeader_header__link__3D_hX")
+    @FindBy(how = How.CLASS_NAME, using = "AppHeader_header__link__3D_hX")
     private ElementsCollection headerMenuLinks;
 
-    public LoginPage clickLoginButton () {
+    public LoginPage clickLoginButton() {
         $(byText("Войти в аккаунт")).click();
-        $(byText("Вход")).shouldBe(visible);
         return page(LoginPage.class);
     }
 
     public LoginPage clickLoginLink() {
         headerMenuLinks.get(2).click();
-        $(byText("Вход")).shouldBe(visible);
         return page(LoginPage.class);
     }
 
@@ -32,32 +31,35 @@ public class MainPage {
         return page(PersonalAreaPage.class);
     }
 
-    public boolean mainPageCheck () {
-        return  $(byText("Оформить заказ")).isDisplayed();
+    public boolean mainPageCheck() {
+        return $(byText("Оформить заказ")).isDisplayed();
     }
 
-    public boolean checkClickToppings () {
+    public boolean checkClickToppings() {
         $(byText("Начинки")).click();
-        $(byText("Филе Люминесцентного тетраодонтимформа")).shouldBe(visible);
-        return  $(byText("Филе Люминесцентного тетраодонтимформа")).isDisplayed();
-
+        return $(byText("Филе Люминесцентного тетраодонтимформа"))
+                .shouldBe(visible)
+                .isDisplayed();
     }
 
-    public MainPage clickToppings () {
+    public MainPage clickToppings() {
         $(byText("Начинки")).click();
         return this;
     }
 
-    public boolean checkClickSauce () {
+    public boolean checkClickSauce() {
         $(byText("Соусы")).click();
-        $(byText("Соус с шипами Антарианского плоскоходца")).shouldBe(visible);
-        return  $(byText("Соус с шипами Антарианского плоскоходца")).isDisplayed();
+        return $(byText("Соус с шипами Антарианского плоскоходца"))
+                .shouldBe(visible)
+                .isDisplayed();
     }
 
-    public boolean checkClickBun () {
+    public boolean checkClickBun() {
         $(byText("Булки")).click();
         $(byText("Флюоресцентная булка R2-D3")).shouldBe(visible);
-        return  $(byText("Флюоресцентная булка R2-D3")).isDisplayed();
+        return $(byText("Флюоресцентная булка R2-D3"))
+                .shouldBe(visible)
+                .isDisplayed();
     }
 }
 

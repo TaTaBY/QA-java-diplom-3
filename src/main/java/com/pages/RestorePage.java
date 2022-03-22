@@ -15,5 +15,4 @@ public class RestorePage {
         loginLink.click();
         return page(LoginPage.class);
     }
-
 }
